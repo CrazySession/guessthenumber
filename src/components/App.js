@@ -6,21 +6,26 @@ class App extends Component {
 
         this.state = {      rndNumber : Math.ceil(Math.random() * 10) ,
                             value : '',
-                            guessed : false};
-
-        this.fieldRef = React.createRef();
+                            guessed : false,
+                            answer: '',
+                            hint : ''};
     }
 
     render(){
     const compareNum = (e) => {
         e.preventDefault();
-        console.log('Input:' + this.state.value);
         if (this.state.value === this.state.rndNumber) {
-            console.log('match');
+            this.setState({ answer: 'Perfect! This is the number we´re looking for!'});
+            this.setState({ hint : ''});
             this.setState({ guessed : true });
         }else{
             this.setState({ value : ''});
-            console.log('wrong');
+            this.setState({ answer : 'Wrong guess. Try again!'})
+            if(this.state.value < this.state.rndNumber){
+                this.setState({ hint : 'too low.'});
+            }else{
+                this.setState({ hint: 'too high.'});
+            }
         }
     };
 
@@ -31,11 +36,11 @@ class App extends Component {
                 <br />
                 <input
                     disabled={this.state.guessed}
-                    ref={this.fieldRef}
                     value={this.state.value}
                     onChange={e => this.setState({ value: parseInt(e.target.value) })} />
             </form>
-            {this.state.rndNumber}
+            {this.state.hint}<br />
+            {this.state.answer}
         </div>
     )
 }}
