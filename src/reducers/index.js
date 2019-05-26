@@ -33,8 +33,18 @@ const counts = (count = 5,action) => {
     return count;
 };
 
+const value = (values = ' ',action) => {
+    if (action.type === 'SET_VALUE'){
+        values = action.payload.value;
+        return values;
+    }
+
+    return values;
+};
+
 export default combineReducers({
     hintList : hintList,
     randomNumber: randomNumber,
-    counts: counts
+    counts: counts,
+    value : value
 });

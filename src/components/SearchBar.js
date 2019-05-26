@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { giveHint, count } from "../actions";
+import { giveHint, count, setValue } from "../actions";
 
 class SearchBar extends Component {
     constructor(props){
         super(props);
 
-        this.state = {      value : '',
-                            guessed : false
-        };
+        this.state = { guessed : false };
     }
 
     render() {
 
+        //#TODO extract function to action creater ?!
         const compareNum = (e) => {
             e.preventDefault();
             this.props.count(1);
-            if (this.state.value === this.props.rndNumber) {
-                this.props.giveHint(this.state.value, this.props.rndNumber);
+            if (this.props.value === this.props.rndNumber) {
+                this.props.giveHint(this.props.value, this.props.rndNumber);
                 this.setState({ guessed : true });
             }else{
                 if (this.props.counts === 1){
-                    console.log('lost');
+                    console.log('you lose!better luck next time.' +
+                        'the number was ' + this.props.rndNumber);
                     this.setState({ guessed : true });
                 }
-
-                this.props.giveHint(this.state.value, this.props.rndNumber);
-                this.setState({ value : ''});
+                this.props.giveHint(this.props.value, this.props.rndNumber);
+                this.props.setValue('');
             }
         };
 
@@ -37,8 +36,9 @@ class SearchBar extends Component {
                     <br />
                     <input
                         disabled={this.state.guessed}
-                        value={this.state.value}
-                        onChange={e => this.setState({ value: parseInt(e.target.value) })} />
+                        value={this.props.value}
+                        onChange={e => this.props.setValue(parseInt(e.target.value))}
+                    />
                 </form>
             </div>
         )
@@ -48,8 +48,9 @@ class SearchBar extends Component {
 const mapStateToProps = (state) => {
     return {
         rndNumber : state.randomNumber,
-        counts : state.counts
+        counts : state.counts,
+        value : state.value
     }
 };
 
-export default connect(mapStateToProps, { giveHint, count }) (SearchBar)
+export default connect(mapStateToProps, { giveHint, count, setValue }) (SearchBar)
