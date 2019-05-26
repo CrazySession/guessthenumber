@@ -8,7 +8,19 @@ const randomNumber = (rndNumber = 0,action) => {
     return rndNumber;
 };
 
-const hintList = (hint = '') => {
+const hintList = (hint = '',action) => {
+    if (action.type === 'NUMBER_ENTERED'){
+        console.log(action.payload.number,action.payload.rndNumber);
+        if (action.payload.number === action.payload.rndNumber) {
+            return hint = 'success';
+        }else if (action.payload.number < action.payload.rndNumber){
+            return hint = 'too low';
+        }else{
+            return hint = 'too high';
+        }
+
+    }
+
     return hint;
 };
 

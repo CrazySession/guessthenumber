@@ -1,6 +1,6 @@
 import React , { Component } from 'react';
 import { connect } from 'react-redux';
-import { createNumber} from "../actions";
+import { createNumber, giveHint } from "../actions";
 
 import SearchBar from './SearchBar';
 
@@ -11,26 +11,19 @@ class App extends Component {
         this.props.createNumber();
 
         this.state = {      value : '',
-                            guessed : false,
-                            answer: '',
-                            hint : ''};
+                            guessed : false
+        };
     }
 
     render(){
     const compareNum = (e) => {
         e.preventDefault();
         if (this.state.value === this.props.rndNumber) {
-            this.setState({ answer: 'Perfect! This is the number we´re looking for!'});
-            this.setState({ hint : ''});
+            this.props.giveHint(this.state.value, this.props.rndNumber);
             this.setState({ guessed : true });
         }else{
+            this.props.giveHint(this.state.value, this.props.rndNumber);
             this.setState({ value : ''});
-            this.setState({ answer : 'Wrong guess. Try again!'})
-            if(this.state.value < this.props.rndNumber){
-                this.setState({ hint : 'too low.'});
-            }else{
-                this.setState({ hint: 'too high.'});
-            }
         }
     };
 
@@ -44,15 +37,20 @@ class App extends Component {
                     value={this.state.value}
                     onChange={e => this.setState({ value: parseInt(e.target.value) })} />
             </form>
-            <SearchBar/>
-            {this.state.hint}<br />
-            {this.state.answer}
+            <SearchBar  />
+            {this.props.hint}
         </div>
     )
 }}
 
 const mapStateToProps = (state) => {
-    return { rndNumber : state.randomNumber }
+    return {
+        rndNumber : state.randomNumber,
+        hint : state.hintList
+    }
 };
 
-export default connect(mapStateToProps, { createNumber })(App)
+export default connect(mapStateToProps, {
+                                            createNumber,
+                                            giveHint
+})(App)

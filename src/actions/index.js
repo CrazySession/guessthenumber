@@ -4,12 +4,12 @@ export const createNumber = () => {
     }
 };
 
-export const giveHint = (number,hint) => {
+export const giveHint = (number, rndNumber) => {
     return {
         type: 'NUMBER_ENTERED',
         payload: {
             number : number,
-            hint : hint
+            rndNumber : rndNumber
         }
     }
 };
