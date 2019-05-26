@@ -13,3 +13,12 @@ export const giveHint = (number, rndNumber) => {
         }
     }
 };
+
+export const count = (some) => {
+    return {
+        type: 'COUNT_ATTEMPTS',
+        payload: {
+            some : some
+        }
+    }
+};

@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { createNumber } from "../actions";
 
 import SearchBar from './SearchBar';
+import RemainingAttempts from "./RemainingAttempts";
 
 class App extends Component {
     constructor(props){
         super(props);
-
         this.props.createNumber();
     }
 
@@ -16,6 +16,7 @@ class App extends Component {
     return (
         <div>
             <SearchBar  />
+            <RemainingAttempts   />
             {this.props.hint}
         </div>
     )

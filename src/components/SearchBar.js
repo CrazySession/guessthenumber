@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { giveHint } from "../actions";
+import { giveHint, count } from "../actions";
 
 class SearchBar extends Component {
     constructor(props){
@@ -15,10 +15,16 @@ class SearchBar extends Component {
 
         const compareNum = (e) => {
             e.preventDefault();
+            this.props.count(1);
             if (this.state.value === this.props.rndNumber) {
                 this.props.giveHint(this.state.value, this.props.rndNumber);
                 this.setState({ guessed : true });
             }else{
+                if (this.props.counts === 1){
+                    console.log('lost');
+                    this.setState({ guessed : true });
+                }
+
                 this.props.giveHint(this.state.value, this.props.rndNumber);
                 this.setState({ value : ''});
             }
@@ -42,7 +48,8 @@ class SearchBar extends Component {
 const mapStateToProps = (state) => {
     return {
         rndNumber : state.randomNumber,
+        counts : state.counts
     }
 };
 
-export default connect(mapStateToProps, { giveHint }) (SearchBar)
+export default connect(mapStateToProps, { giveHint, count }) (SearchBar)
