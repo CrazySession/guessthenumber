@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { giveHint, count, setValue } from "../actions";
+import { giveHint, count, setValue, guessed } from "../actions";
 
 class SearchBar extends Component {
-    constructor(props){
-        super(props);
-
-        this.state = { guessed : false };
-    }
-
     render() {
 
         //#TODO extract function to action creater ?!
@@ -17,12 +11,12 @@ class SearchBar extends Component {
             this.props.count(1);
             if (this.props.value === this.props.rndNumber) {
                 this.props.giveHint(this.props.value, this.props.rndNumber);
-                this.setState({ guessed : true });
+                this.props.guessed(true);
             }else{
                 if (this.props.counts === 1){
                     console.log('you lose!better luck next time.' +
                         'the number was ' + this.props.rndNumber);
-                    this.setState({ guessed : true });
+                    this.props.guessed(true);
                 }
                 this.props.giveHint(this.props.value, this.props.rndNumber);
                 this.props.setValue('');
@@ -35,7 +29,7 @@ class SearchBar extends Component {
                     <label>Guess the number</label>
                     <br />
                     <input
-                        disabled={this.state.guessed}
+                        disabled={this.props.guess}
                         value={this.props.value}
                         onChange={e => this.props.setValue(parseInt(e.target.value))}
                     />
@@ -49,8 +43,9 @@ const mapStateToProps = (state) => {
     return {
         rndNumber : state.randomNumber,
         counts : state.counts,
-        value : state.value
+        value : state.value,
+        guess : state.guess
     }
 };
 
-export default connect(mapStateToProps, { giveHint, count, setValue }) (SearchBar)
+export default connect(mapStateToProps, { giveHint, count, setValue, guessed }) (SearchBar)

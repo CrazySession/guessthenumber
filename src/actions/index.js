@@ -31,3 +31,12 @@ export const setValue = (value) => {
         }
     }
 };
+
+export const guessed = (status) => {
+    return {
+        type: 'GUESS_STATUS',
+        payload: {
+            status : status
+        }
+    }
+};

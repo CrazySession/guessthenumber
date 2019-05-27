@@ -42,9 +42,18 @@ const value = (values = ' ',action) => {
     return values;
 };
 
+const guess = (stat = false,action) => {
+    if (action.type === 'GUESS_STATUS'){
+        return stat = action.payload.status;
+    }
+
+    return stat;
+};
+
 export default combineReducers({
     hintList : hintList,
     randomNumber: randomNumber,
     counts: counts,
-    value : value
+    value : value,
+    guess : guess
 });
