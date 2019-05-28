@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { giveHint, count, setValue, guessed } from "../actions";
 
-class SearchBar extends Component {
-    render() {
+const SearchBar = (props) => {
 
         //#TODO extract function to action creater !? or helper function ?!
         const compareNum = (e) => {
             e.preventDefault();
-            this.props.count(1);
-            if (this.props.value === this.props.rndNumber) {
-                this.props.giveHint(this.props.value, this.props.rndNumber);
-                this.props.guessed(true);
+            props.count(1);
+            if (props.value === props.rndNumber) {
+                props.giveHint(props.value, props.rndNumber);
+                props.guessed(true);
             }else{
-                if (this.props.counts === 1){
+                if (props.counts === 1){
                     console.log('you lose!better luck next time.' +
-                        'the number was ' + this.props.rndNumber);
-                    this.props.guessed(true);
+                        'the number was ' + props.rndNumber);
+                    props.guessed(true);
                 }
-                this.props.giveHint(this.props.value, this.props.rndNumber);
-                this.props.setValue('');
+                props.giveHint(props.value, props.rndNumber);
+                props.setValue('');
             }
         };
 
@@ -29,14 +28,14 @@ class SearchBar extends Component {
                     <label>Guess the number</label>
                     <br />
                     <input
-                        disabled={this.props.guess}
-                        value={this.props.value}
-                        onChange={e => this.props.setValue(parseInt(e.target.value))}
+                        disabled={props.guess}
+                        value={props.value}
+                        onChange={e => props.setValue(parseInt(e.target.value))}
                     />
                 </form>
             </div>
         )
-    }
+
 }
 
 const mapStateToProps = (state) => {
