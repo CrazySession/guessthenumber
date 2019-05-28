@@ -5,7 +5,7 @@ import { giveHint, count, setValue, guessed } from "../actions";
 class SearchBar extends Component {
     render() {
 
-        //#TODO extract function to action creater ?!
+        //#TODO extract function to action creater !? or helper function ?!
         const compareNum = (e) => {
             e.preventDefault();
             this.props.count(1);

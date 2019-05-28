@@ -4,6 +4,7 @@ import { createNumber } from "../actions";
 
 import SearchBar from './SearchBar';
 import RemainingAttempts from "./RemainingAttempts";
+import BurnendNumbers from './BurnendNumbers';
 
 class App extends Component {
     constructor(props){
@@ -18,6 +19,7 @@ class App extends Component {
             <SearchBar  />
             <RemainingAttempts   />
             {this.props.hint}
+            <BurnendNumbers     />
         </div>
     )
 }}
