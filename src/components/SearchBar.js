@@ -19,7 +19,6 @@ const SearchBar = (props) => {
                 }
                 props.giveHint(props.value, props.rndNumber);
                 props.addValue(props.value);
-                console.log(props.valueList);
                 props.setValue('');
             }
         };
