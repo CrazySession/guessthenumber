@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-class BurnendNumbers extends Component{
-    render() {
+const BurnendNumbers = (props) =>{
         return (
-            this.props.valueList.map(num => {
+            props.valueList.map(num => {
                 return <div key={num} style={{float: 'left' ,textDecoration: 'line-through'}}>
                     {`${num}, `}
                 </div>
             })
         )
     }
-}
 
 const mapStateToProps = (state) => {
     return {
