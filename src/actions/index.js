@@ -40,3 +40,12 @@ export const guessed = (status) => {
         }
     }
 };
+
+export const addValue = (value) => {
+    return {
+        type: 'ADD_VALUE',
+        payload: {
+            value : value
+        }
+    }
+};

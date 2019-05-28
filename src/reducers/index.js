@@ -33,10 +33,15 @@ const counts = (count = 5,action) => {
     return count;
 };
 
-const value = (values = ' ',action) => {
+const value = (values = ' ', action, brndNum = []) => {
     if (action.type === 'SET_VALUE'){
         values = action.payload.value;
         return values;
+    }
+
+    if (action.type === 'ADD_VALUE'){
+        brndNum = [...brndNum,action.payload.value];
+        return brndNum;
     }
 
     return values;
@@ -50,10 +55,20 @@ const guess = (stat = false,action) => {
     return stat;
 };
 
+const valueList = (valueList = [],action) => {
+    if (action.type === 'ADD_VALUE') {
+        valueList = [...valueList,action.payload.value];
+        return valueList
+    }
+
+    return valueList;
+};
+
 export default combineReducers({
     hintList : hintList,
     randomNumber: randomNumber,
     counts: counts,
     value : value,
-    guess : guess
+    guess : guess,
+    valueList : valueList
 });

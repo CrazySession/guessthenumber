@@ -18,8 +18,9 @@ class App extends Component {
         <div>
             <SearchBar  />
             <RemainingAttempts   />
-            {this.props.hint}
             <BurnendNumbers     />
+            <br />
+            {this.props.hint}
         </div>
     )
 }}

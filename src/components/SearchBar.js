@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { giveHint, count, setValue, guessed } from "../actions";
+import { giveHint, count, setValue, guessed, addValue } from "../actions";
 
 const SearchBar = (props) => {
 
@@ -18,6 +18,8 @@ const SearchBar = (props) => {
                     props.guessed(true);
                 }
                 props.giveHint(props.value, props.rndNumber);
+                props.addValue(props.value);
+                console.log(props.valueList);
                 props.setValue('');
             }
         };
@@ -36,15 +38,21 @@ const SearchBar = (props) => {
             </div>
         )
 
-}
+};
 
 const mapStateToProps = (state) => {
     return {
         rndNumber : state.randomNumber,
-        counts : state.counts,
-        value : state.value,
-        guess : state.guess
+        counts :    state.counts,
+        value :     state.value,
+        guess :     state.guess,
+        valueList : state.valueList
     }
 };
 
-export default connect(mapStateToProps, { giveHint, count, setValue, guessed }) (SearchBar)
+export default connect(mapStateToProps, {   giveHint,
+                                            count,
+                                            setValue,
+                                            guessed,
+                                            addValue
+                                        }) (SearchBar)
