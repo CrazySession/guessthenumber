@@ -4,7 +4,7 @@ import Difficulties from './Difficulties';
 const NavBar = () => {
     return(
         <div>
-            <button>New Game</button>
+            <button>New Game</button><br/><br/>
             <Difficulties   />
         </div>
     )

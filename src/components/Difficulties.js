@@ -5,7 +5,9 @@ const Difficulties = () => {
         const difficulty = diff.map(diff => {
             return(
                 <button key={diff.difficulty}>
-                    {diff.difficulty}
+                    <b style={{fontSize:'1.5em'}}>{diff.difficulty}</b><br/><br/><hr/>
+                    Count: {diff.numbers}<br/><br/>
+                    Attempts: {diff.tries}
                 </button>
             )
         });
@@ -15,9 +17,3 @@ const Difficulties = () => {
 };
 
 export default Difficulties
-
-
-/*
-Object.keys(myObject).map(function(key, index) {
-    myObject[key] *= 2;
-});*/

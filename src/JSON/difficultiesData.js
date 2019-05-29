@@ -1,15 +1,15 @@
 export const diff = [
-    { difficulty : 'easy',
+    { difficulty : 'EASY',
         numbers : 10,
         tries : 5,
     },
 
-    { difficulty : 'medium',
+    { difficulty : 'MEDIUM',
         numbers : 100,
         tries : 10
     },
 
-    { difficulty : 'hard',
+    { difficulty : 'HARD',
         numbers : 1000,
         tries : 15
     }
