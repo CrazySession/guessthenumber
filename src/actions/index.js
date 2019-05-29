@@ -1,6 +1,9 @@
-export const createNumber = () => {
+export const createNumber = (number) => {
     return{
         type: 'CREATE_RND_NUMBER',
+        payload: {
+            number : number
+        }
     }
 };
 
@@ -46,6 +49,15 @@ export const addValue = (value) => {
         type: 'ADD_VALUE',
         payload: {
             value : value
+        }
+    }
+};
+
+export const setDifficulty = (tries) => {
+    return {
+        type: 'SET_DIFFICULTY',
+        payload: {
+            tries : tries
         }
     }
 };

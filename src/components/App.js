@@ -8,13 +8,13 @@ import BurnendNumbers from './BurnendNumbers';
 import NavBar from './NavBar';
 
 class App extends Component {
-    constructor(props){
+/*    constructor(props){
         super(props);
         this.props.createNumber();
-    }
+    }*/
 
     render(){
-
+    console.log(this.props.rndNumber);
     return (
         <div>
             <SearchBar          />

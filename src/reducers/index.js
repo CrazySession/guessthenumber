@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 
 const randomNumber = (rndNumber = 0,action) => {
     if (action.type === 'CREATE_RND_NUMBER'){
-        return rndNumber = Math.ceil(Math.random() * 10);
+        return rndNumber = Math.ceil(Math.random() * action.payload.number);
     }
 
     return rndNumber;
@@ -24,6 +24,11 @@ const hintList = (hint = '',action) => {
 };
 
 const counts = (count = 5,action) => {
+    if (action.type === 'SET_DIFFICULTY'){
+        count = action.payload.tries;
+        return count
+    }
+
     if (action.type === 'COUNT_ATTEMPTS'){
         count = count - action.payload.some;
         // count-- also fine -- no need for action creaator variable
