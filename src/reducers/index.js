@@ -38,6 +38,23 @@ const counts = (count = 5,action) => {
     return count;
 };
 
+const chosenDiff = (chosenDiff = '',action) => {
+    if (action.type === 'SET_DIFFICULTY'){
+        switch (action.payload.tries){
+            case 5:
+                return chosenDiff = 'Easy';
+            case 10:
+                return chosenDiff = 'Medium';
+            case 15:
+                return chosenDiff = 'Hard';
+            default:
+                return chosenDiff = 'Dunno.Something went wrong';
+        }
+    }
+
+    return chosenDiff
+};
+
 const value = (values = ' ', action) => {
     if (action.type === 'SET_VALUE'){
         values = action.payload.value;
@@ -73,5 +90,6 @@ export default combineReducers({
     counts: counts,
     value : value,
     guess : guess,
-    valueList : valueList
+    valueList : valueList,
+    chosenDiff : chosenDiff
 });

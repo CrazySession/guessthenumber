@@ -17,6 +17,7 @@ const NavBar = (props) => {
                     onClick={gameStart}>
                     Start Game
                 </button>
+                { props.chosenDiff }
                 <br/><br/>
                 <Difficulties   />
             </div>
@@ -30,7 +31,8 @@ const NavBar = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        guess : state.guess
+        guess : state.guess,
+        chosenDiff : state.chosenDiff
     }
 };
 
