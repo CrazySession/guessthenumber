@@ -6,8 +6,12 @@ import Difficulties from './Difficulties';
 
 const NavBar = (props) => {
     const gameStart = () => {
-        props.addValue('clear');
-        props.guessed(false);
+        if (props.chosenDiff !== 'Easy'){
+            alert('please select a difficulty first');
+        }else {
+            props.addValue('clear');
+            props.guessed(false);
+        }
     };
 
     if (props.guess)

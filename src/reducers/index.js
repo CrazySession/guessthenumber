@@ -38,7 +38,7 @@ const counts = (count = 5,action) => {
     return count;
 };
 
-const chosenDiff = (chosenDiff = '',action) => {
+const chosenDiff = (chosenDiff = 'Choose your difficulty',action) => {
     if (action.type === 'SET_DIFFICULTY'){
         switch (action.payload.tries){
             case 5:
