@@ -52,7 +52,7 @@ const value = (values = ' ', action, brndNum = []) => {
     return values;
 };
 
-const guess = (stat = false,action) => {
+const guess = (stat = true,action) => {
     if (action.type === 'GUESS_STATUS'){
         return stat = action.payload.status;
     }
