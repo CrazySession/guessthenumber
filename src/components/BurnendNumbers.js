@@ -9,7 +9,7 @@ const BurnendNumbers = (props) =>{
                 </div>
             })
         )
-    }
+    };
 
 const mapStateToProps = (state) => {
     return {

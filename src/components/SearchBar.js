@@ -11,6 +11,7 @@ const SearchBar = (props) => {
             if (props.value === props.rndNumber) {
                 props.giveHint(props.value, props.rndNumber);
                 props.guessed(true);
+                props.setValue('');
             }else{
                 if (props.counts === 1){
                     console.log('you lose!better luck next time.' +

@@ -1,15 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { guessed } from "../actions";
+import { guessed, addValue } from "../actions";
 
 import Difficulties from './Difficulties';
 
 const NavBar = (props) => {
+    const gameStart = () => {
+        props.addValue('clear');
+        props.guessed(false);
+    };
+
     if (props.guess)
         return(
             <div>
                 <button
-                    onClick={() => props.guessed(false)}>
+                    onClick={gameStart}>
                     Start Game
                 </button>
                 <br/><br/>
@@ -29,4 +34,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, { guessed }) (NavBar)
+export default connect(mapStateToProps, { guessed, addValue }) (NavBar)
