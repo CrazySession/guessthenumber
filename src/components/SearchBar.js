@@ -27,8 +27,6 @@ const SearchBar = (props) => {
         return (
             <div>
                 <form onSubmit={compareNum}>
-                    <label>Guess the number</label>
-                    <br />
                     <input
                         disabled={props.guess}
                         value={props.value}

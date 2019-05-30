@@ -2,6 +2,7 @@ import React , { Component } from 'react';
 import { connect } from 'react-redux';
 import { createNumber } from "../actions";
 
+import Header from './Header';
 import SearchBar from './SearchBar';
 import RemainingAttempts from "./RemainingAttempts";
 import BurnendNumbers from './BurnendNumbers';
@@ -12,6 +13,7 @@ class App extends Component {
     console.log(this.props.rndNumber);
     return (
         <div>
+            <Header             />
             <SearchBar          />
             <RemainingAttempts  />
             <BurnendNumbers     />
