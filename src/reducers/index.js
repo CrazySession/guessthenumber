@@ -48,7 +48,7 @@ const chosenDiff = (chosenDiff = 'Choose your difficulty',action) => {
             case 15:
                 return chosenDiff = 'Hard';
             default:
-                return chosenDiff = 'Dunno.Something went wrong';
+                return chosenDiff = 'Choose your difficulty';
         }
     }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { giveHint, count, setValue, guessed, addValue } from "../actions";
+import { giveHint, count, setValue, guessed, addValue, setDifficulty } from "../actions";
 
 const SearchBar = (props) => {
 
@@ -12,14 +12,17 @@ const SearchBar = (props) => {
                 props.giveHint(props.value, props.rndNumber);
                 props.guessed(true);
                 props.setValue('');
+                props.setDifficulty('');
             }else{
                 if (props.counts === 1){
                     console.log('you lose!better luck next time.' +
                         'the number was ' + props.rndNumber);
                     props.guessed(true);
+                    props.setDifficulty('');
+                }else {
+                    props.giveHint(props.value, props.rndNumber);
+                    props.addValue(props.value);
                 }
-                props.giveHint(props.value, props.rndNumber);
-                props.addValue(props.value);
                 props.setValue('');
             }
         };
@@ -52,5 +55,6 @@ export default connect(mapStateToProps, {   giveHint,
                                             count,
                                             setValue,
                                             guessed,
-                                            addValue
+                                            addValue,
+                                            setDifficulty
                                         }) (SearchBar)
