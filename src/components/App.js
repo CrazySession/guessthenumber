@@ -8,18 +8,33 @@ import RemainingAttempts from "./RemainingAttempts";
 import BurnendNumbers from './BurnendNumbers';
 import NavBar from './NavBar';
 
+import './css/grid.css';
+
 class App extends Component {
     render(){
     console.log(this.props.rndNumber);
     return (
-        <div>
-            <Header             />
-            <SearchBar          />
-            <RemainingAttempts  />
-            <BurnendNumbers     />
+        <div className={'container'}>
+            <header>
+                <Header             />
+            </header>
+            <main>
+                <SearchBar          />
+            </main>
+            <aside id={"left"}>
+                <RemainingAttempts  />
+            </aside>
+            <aside id={"right"}>
+                <BurnendNumbers     />
+            </aside>
             <br                 />
             {this.props.hint}
-            <NavBar             />
+            <section id={'nav'}>
+                <NavBar             />
+            </section>
+            <footer>
+
+            </footer>
         </div>
     )
 }}
