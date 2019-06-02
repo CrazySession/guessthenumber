@@ -7,6 +7,7 @@ export const createNumber = (number) => {
     }
 };
 
+// too low - too high
 export const giveHint = (number, rndNumber) => {
     return {
         type: 'NUMBER_ENTERED',
@@ -26,6 +27,7 @@ export const count = (some) => {
     }
 };
 
+// set input value -- onChange()
 export const setValue = (value) => {
     return {
         type: 'SET_VALUE',
@@ -35,6 +37,7 @@ export const setValue = (value) => {
     }
 };
 
+// lock/open input field
 export const guessed = (status) => {
     return {
         type: 'GUESS_STATUS',
@@ -44,6 +47,7 @@ export const guessed = (status) => {
     }
 };
 
+// adding numbers for BurnendNumbers
 export const addValue = (value) => {
     return {
         type: 'ADD_VALUE',

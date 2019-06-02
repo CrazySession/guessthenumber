@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+// create rndNumber depending on difficulty - { createNumber } actionCreater
 const randomNumber = (rndNumber = 0,action) => {
     if (action.type === 'CREATE_RND_NUMBER'){
         return rndNumber = Math.ceil(Math.random() * action.payload.number);
@@ -23,6 +24,7 @@ const hintList = (hint = '',action) => {
     return hint;
 };
 
+// sets count depending on difficulty and (--) attempts
 const counts = (count = 5,action) => {
     if (action.type === 'SET_DIFFICULTY'){
         count = action.payload.tries;
@@ -55,6 +57,7 @@ const chosenDiff = (chosenDiff = 'Choose your difficulty',action) => {
     return chosenDiff
 };
 
+// saves value from input
 const value = (values = ' ', action) => {
     if (action.type === 'SET_VALUE'){
         values = action.payload.value;
@@ -64,6 +67,7 @@ const value = (values = ' ', action) => {
     return values;
 };
 
+// locks and opens input field
 const guess = (stat = true,action) => {
     if (action.type === 'GUESS_STATUS'){
         return stat = action.payload.status;

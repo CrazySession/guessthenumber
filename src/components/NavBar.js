@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { guessed, addValue, createNumber } from "../actions";
+import { guessed, addValue } from "../actions";
 
 import Difficulties from './Difficulties';
 
 const NavBar = (props) => {
+
+    //#TODO onClick={() => {this.myInp.focus()} ----- further infos see SearchBar INPUT-TODO
     const gameStart = () => {
         if (props.chosenDiff !== 'Easy' && props.chosenDiff !== 'Medium' && props.chosenDiff !== 'Hard'){
             alert('please select a difficulty first');
@@ -14,6 +16,7 @@ const NavBar = (props) => {
         }
     };
 
+    // return if input field locked --- game not started yet
     if (props.guess)
         return(
             <div>
@@ -27,6 +30,7 @@ const NavBar = (props) => {
             </div>
         );
 
+    // return if input field open --- game started
     if (!props.guess)
         return(
             <div>Good Luck!</div>
@@ -40,4 +44,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, { guessed, addValue, createNumber }) (NavBar)
+export default connect(mapStateToProps, { guessed, addValue }) (NavBar)
