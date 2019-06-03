@@ -24,7 +24,7 @@ class App extends Component {
             <aside id={"left"}>
                 <RemainingAttempts  />
             </aside>
-            <aside id={"right"}>
+            <aside id={"right"} style={{border:'black solid 2px'}}>
                 <BurnendNumbers     />
             </aside>
             <section id={'nav'}>
