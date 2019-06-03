@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { giveHint, count, setValue, guessed, addValue, setDifficulty } from "../actions";
 
+import './css/searchBar.css';
+
 const SearchBar = (props) => {
 
         //#TODO extract function to action creater !? or helper function ?!
@@ -43,6 +45,7 @@ const SearchBar = (props) => {
             <div>
                 <form onSubmit={compareNum}>
                     <input
+                        type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
                         disabled={props.guess}
                         value={props.value}
