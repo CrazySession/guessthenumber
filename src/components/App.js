@@ -33,7 +33,7 @@ class App extends Component {
                 <NavBar             />
             </section>
             <footer>
-
+                Footer
             </footer>
         </div>
     )
