@@ -1,63 +1,91 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
+
 import { giveHint, count, setValue, guessed, addValue, setDifficulty } from "../actions";
+import unsplash from '../api/unsplash'
 
 import './css/searchBar.css';
 import {fonts} from "../data/fonts";
 
-const SearchBar = (props) => {
+class SearchBar extends Component {
+    state = { pic : ''};
 
-        //#TODO extract function to action creater !? or helper function ?!
+    getUser = async () => {
+        try {
+            const response = await unsplash.get('/search/photos', {
+                params: {query : 'cats'}
+            });
+            console.log(response.data.results[0].urls.small);
+            this.setState({ pic:response.data.results[0].urls.small })
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-        // #### Main Function ####
+    //#TODO extract function to action creater !? or helper function ?!
 
-        const compareNum = (e) => {
-            e.preventDefault();
+    // #### Main Function ####
 
-            // Reducing Reaming Attempts by one
-            props.count(1);
+    compareNum = (e) => {
+        e.preventDefault();
 
-            // Case --- Win Game
-            if (props.value === props.rndNumber) {
-                props.giveHint(props.value, props.rndNumber);
-                props.guessed(true);
-/*                props.setValue('');*/
-                props.setDifficulty('');
-            }else{
+        // Reducing Reaming Attempts by one
+        this.props.count(1);
 
-                // Case -- - Lose Game
-                if (props.counts === 1){
-                    console.log('you lose!better luck next time.' +
-                        'the number was ' + props.rndNumber);
-                    props.guessed(true);
-                    props.setDifficulty('');
+        // Case --- Win Game
+        if (this.props.value === this.props.rndNumber) {
+            this.props.giveHint(this.props.value, this.props.rndNumber);
+            this.props.guessed(true);
+/*                this.props.setValue('');*/
+            this.props.setDifficulty('');
+            this.getUser();
+        }else{
 
-                    // Case --- Guessed Wrong but remaining attempts
-                }else {
-                    props.giveHint(props.value, props.rndNumber);
-                    props.addValue(props.value);
-                }
-                
-                props.setValue('');
+            // Case -- - Lose Game
+            if (this.props.counts === 1){
+                console.log('you lose!better luck next time.' +
+                    'the number was ' + this.props.rndNumber);
+                this.props.guessed(true);
+                this.props.setDifficulty('');
+
+                // Case --- Guessed Wrong but remaining attempts
+            }else {
+                this.props.giveHint(this.props.value, this.props.rndNumber);
+                this.props.addValue(this.props.value);
             }
-        };
+
+            this.props.setValue('');
+        }
+    };
+    render() {
         //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
+        if (this.props.value === this.props.rndNumber && this.props.guess === true) {
+            return (
+                <div>
+                    <img src={this.state.pic} />
+                    <p style={{ textAlign:'center', fontFamily: `'${fonts[this.props.randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
+                </div>
+            )
+        }
+
         return (
             <div>
-                <form onSubmit={compareNum}>
+                <form onSubmit={this.compareNum}>
                     <input
-                        style={ props.value === props.rndNumber && props.guess === true ? {border:'green solid 8px'} : {border:'black solid 8px',
-                                fontFamily: `'${fonts[props.randomFont]}'`}}
+                        style={this.props.value === this.props.rndNumber && this.props.guess === true ? {border: 'green solid 8px'} : {
+                            border: 'black solid 8px',
+                            fontFamily: `'${fonts[this.props.randomFont]}'`
+                        }}
                         type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
-                        disabled={props.guess}
-                        value={props.value}
-                        onChange={e => props.setValue(parseInt(e.target.value))}
+                        disabled={this.props.guess}
+                        value={this.props.value}
+                        onChange={e => this.props.setValue(parseInt(e.target.value))}
                     />
                 </form>
             </div>
         )
-
+    }
 };
 
 const mapStateToProps = (state) => {
