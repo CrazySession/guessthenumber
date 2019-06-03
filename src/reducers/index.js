@@ -9,10 +9,18 @@ const randomNumber = (rndNumber = 0,action) => {
     return rndNumber;
 };
 
+const randomFont = (fontNumber = 0,action) => {
+    if (action.type === 'CHOOSE_FONT'){
+        return fontNumber = action.payload.fontNumber;
+    }
+
+    return fontNumber;
+};
+
 const hintList = (hint = '',action) => {
     if (action.type === 'NUMBER_ENTERED'){
         if (action.payload.number === action.payload.rndNumber) {
-            return hint = 'success';
+            return hint = 'Congratulations!You guessed the number!';
         }else if (action.payload.number < action.payload.rndNumber){
             return hint = 'too low';
         }else{
@@ -95,5 +103,6 @@ export default combineReducers({
     value : value,
     guess : guess,
     valueList : valueList,
-    chosenDiff : chosenDiff
+    chosenDiff : chosenDiff,
+    randomFont : randomFont
 });

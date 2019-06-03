@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { giveHint, count, setValue, guessed, addValue, setDifficulty } from "../actions";
 
 import './css/searchBar.css';
+import {fonts} from "../data/fonts";
 
 const SearchBar = (props) => {
 
@@ -45,7 +46,8 @@ const SearchBar = (props) => {
             <div>
                 <form onSubmit={compareNum}>
                     <input
-                        style={ props.value === props.rndNumber && props.guess == true ? {border:'green solid 8px'} : {border:'black solid 8px'}}
+                        style={ props.value === props.rndNumber && props.guess == true ? {border:'green solid 8px'} : {border:'black solid 8px',
+                                fontFamily: `'${fonts[props.randomFont]}'`}}
                         type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
                         disabled={props.guess}
@@ -64,7 +66,8 @@ const mapStateToProps = (state) => {
         counts :    state.counts,
         value :     state.value,
         guess :     state.guess,
-        valueList : state.valueList
+        valueList : state.valueList,
+        randomFont: state.randomFont
     }
 };
 

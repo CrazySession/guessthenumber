@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { guessed, addValue, setValue } from "../actions";
 
 import Difficulties from './Difficulties';
+import {fonts} from "../data/fonts";
 
 const NavBar = (props) => {
 
@@ -25,7 +26,7 @@ const NavBar = (props) => {
                     onClick={gameStart}>
                     Start Game
                 </button>
-                { props.chosenDiff }
+                <span style={{ fontFamily: `'${fonts[props.randomFont]}'` ,fontSize: '1em'}}>{ props.chosenDiff }</span>
                 <br/><br/>
                 <Difficulties   />
             </div>
@@ -34,7 +35,7 @@ const NavBar = (props) => {
     // return if input field open --- game started
     if (!props.guess)
         return(
-            <div>{props.hint}</div>
+            <div style={{ fontFamily: `'${fonts[props.randomFont]}'` ,fontSize: '4em'}}>{props.hint}</div>
         );
 };
 
@@ -42,7 +43,8 @@ const mapStateToProps = (state) => {
     return {
         guess : state.guess,
         chosenDiff : state.chosenDiff,
-        hint : state.hintList
+        hint : state.hintList,
+        randomFont : state.randomFont
     }
 };
 

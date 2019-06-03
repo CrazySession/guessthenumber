@@ -7,6 +7,15 @@ export const createNumber = (number) => {
     }
 };
 
+export const chooseFont = (fontNumber) => {
+    return{
+        type: 'CHOOSE_FONT',
+        payload:{
+            fontNumber : fontNumber
+        }
+    }
+};
+
 // too low - too high
 export const giveHint = (number, rndNumber) => {
     return {
