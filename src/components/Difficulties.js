@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setDifficulty, createNumber } from "../actions";
 
-import { diff } from "../JSON/difficultiesData";
+import { diff } from "../data/difficultiesData";
 
 const Difficulties = (props) => {
         const difficulty = diff.map(diff => {
