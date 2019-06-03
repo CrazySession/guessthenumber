@@ -11,7 +11,7 @@ const randomNumber = (rndNumber = 0,action) => {
 
 const randomFont = (fontNumber = 0,action) => {
     if (action.type === 'CHOOSE_FONT'){
-        return fontNumber = action.payload.fontNumber;
+        return fontNumber = Math.ceil(Math.random() * action.payload.fontNumber);
     }
 
     return fontNumber;

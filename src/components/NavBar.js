@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { guessed, addValue, setValue } from "../actions";
+import { guessed, addValue, setValue, chooseFont } from "../actions";
 
 import Difficulties from './Difficulties';
 import {fonts} from "../data/fonts";
@@ -14,6 +14,7 @@ const NavBar = (props) => {
         }else{
             props.addValue('clear');
             props.guessed(false);
+            props.chooseFont(fonts.length-1);
             props.setValue('');
         }
     };
@@ -48,4 +49,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, { guessed, addValue, setValue }) (NavBar)
+export default connect(mapStateToProps, { guessed, addValue, setValue, chooseFont }) (NavBar)

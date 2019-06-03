@@ -8,9 +8,7 @@ import { fonts } from "../data/fonts";
 class Header extends Component {
     constructor(props){
         super(props);
-
-        this.state = { number : Math.ceil(Math.random() * (fonts.length-1))};
-        this.props.chooseFont(this.state.number);
+        this.props.chooseFont(fonts.length-1);
     }
     render(){
 
