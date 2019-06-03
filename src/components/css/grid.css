@@ -6,7 +6,7 @@
 }
 
 header{
-    background-color: blue;
+/*    background-color: blue;*/
     grid-row: 1;
     grid-column: 1 / -1;
     text-align: center;
@@ -14,7 +14,7 @@ header{
 }
 
 main{
-    background-color: orange;
+/*    background-color: orange;*/
     grid-row: 2;
     grid-column: 5 / 9;
     display: flex;
@@ -23,7 +23,7 @@ main{
 }
 
 #left{
-    background-color: green;
+/*    background-color: green;*/
     grid-row: 2;
     grid-column: 2 / 5;
     display: flex;
@@ -32,7 +32,7 @@ main{
 }
 
 #right{
-    background-color: yellow;
+/*    background-color: yellow;*/
     grid-row: 2;
     grid-column: 9 / 12;
     display: flex;
@@ -41,7 +41,7 @@ main{
 }
 
 #nav{
-    background-color: lightslategray;
+/*    background-color: lightslategray;*/
     grid-row: 3;
     grid-column: 2 / 12;
     display: flex;
@@ -50,7 +50,7 @@ main{
 }
 
 footer{
-    background-color: darkred;
+/*    background-color: darkred;*/
     grid-row: 4;
     grid-column: 1 / -1;
 }
