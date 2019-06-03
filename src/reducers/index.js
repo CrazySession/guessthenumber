@@ -20,7 +20,7 @@ const randomFont = (fontNumber = 0,action) => {
 const hintList = (hint = '',action) => {
     if (action.type === 'NUMBER_ENTERED'){
         if (action.payload.number === action.payload.rndNumber) {
-            return hint = 'Congratulations!You guessed the number!';
+            return hint = '';
         }else if (action.payload.number < action.payload.rndNumber){
             return hint = 'too low';
         }else{
