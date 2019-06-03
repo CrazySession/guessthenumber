@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { guessed, addValue } from "../actions";
+import { guessed, addValue, setValue } from "../actions";
 
 import Difficulties from './Difficulties';
 
@@ -13,6 +13,7 @@ const NavBar = (props) => {
         }else{
             props.addValue('clear');
             props.guessed(false);
+            props.setValue('');
         }
     };
 
@@ -44,4 +45,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps, { guessed, addValue }) (NavBar)
+export default connect(mapStateToProps, { guessed, addValue, setValue }) (NavBar)

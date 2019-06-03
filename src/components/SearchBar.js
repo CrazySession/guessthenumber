@@ -20,7 +20,7 @@ const SearchBar = (props) => {
             if (props.value === props.rndNumber) {
                 props.giveHint(props.value, props.rndNumber);
                 props.guessed(true);
-                props.setValue('');
+/*                props.setValue('');*/
                 props.setDifficulty('');
             }else{
 
@@ -45,6 +45,7 @@ const SearchBar = (props) => {
             <div>
                 <form onSubmit={compareNum}>
                     <input
+                        style={ props.value === props.rndNumber && props.guess == true ? {border:'green solid 8px'} : {border:'black solid 8px'}}
                         type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
                         disabled={props.guess}
