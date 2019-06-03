@@ -34,14 +34,15 @@ const NavBar = (props) => {
     // return if input field open --- game started
     if (!props.guess)
         return(
-            <div>Good Luck!</div>
+            <div>{props.hint}</div>
         );
 };
 
 const mapStateToProps = (state) => {
     return {
         guess : state.guess,
-        chosenDiff : state.chosenDiff
+        chosenDiff : state.chosenDiff,
+        hint : state.hintList
     }
 };
 

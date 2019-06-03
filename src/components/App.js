@@ -27,8 +27,6 @@ class App extends Component {
             <aside id={"right"}>
                 <BurnendNumbers     />
             </aside>
-            <br                 />
-            {this.props.hint}
             <section id={'nav'}>
                 <NavBar             />
             </section>
@@ -42,7 +40,6 @@ class App extends Component {
 const mapStateToProps = (state) => {
     return {
         rndNumber : state.randomNumber,
-        hint : state.hintList
     }
 };
 
