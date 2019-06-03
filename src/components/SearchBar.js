@@ -46,7 +46,7 @@ const SearchBar = (props) => {
             <div>
                 <form onSubmit={compareNum}>
                     <input
-                        style={ props.value === props.rndNumber && props.guess == true ? {border:'green solid 8px'} : {border:'black solid 8px',
+                        style={ props.value === props.rndNumber && props.guess === true ? {border:'green solid 8px'} : {border:'black solid 8px',
                                 fontFamily: `'${fonts[props.randomFont]}'`}}
                         type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
