@@ -16,7 +16,7 @@ class SearchBar extends Component {
                 params: {query : 'cats'}
             });
             console.log(response.data.results[0].urls.small);
-            this.setState({ pic:response.data.results[0].urls.small })
+            this.setState({ pic : response.data.results[0].urls.small })
         } catch (error) {
             console.error(error);
         }
@@ -58,12 +58,15 @@ class SearchBar extends Component {
         }
     };
     render() {
+        // destructering
+        const { value, rndNumber, guess, randomFont } = this.props;
+
         //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
-        if (this.props.value === this.props.rndNumber && this.props.guess === true) {
+        if (value === rndNumber && guess === true) {
             return (
                 <div>
-                    <img src={this.state.pic} />
-                    <p style={{ textAlign:'center', fontFamily: `'${fonts[this.props.randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
+                    <img src={this.state.pic} alt={'random Pic'}/>
+                    <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
                 </div>
             )
         }
@@ -72,21 +75,21 @@ class SearchBar extends Component {
             <div>
                 <form onSubmit={this.compareNum}>
                     <input
-                        style={this.props.value === this.props.rndNumber && this.props.guess === true ? {border: 'green solid 8px'} : {
+                        style={value === rndNumber && guess === true ? {border: 'green solid 8px'} : {
                             border: 'black solid 8px',
-                            fontFamily: `'${fonts[this.props.randomFont]}'`
+                            fontFamily: `'${fonts[randomFont]}'`
                         }}
                         type={'number'}
                         /*ref={(ip) => this.myInp = ip}*/
-                        disabled={this.props.guess}
-                        value={this.props.value}
+                        disabled={guess}
+                        value={value}
                         onChange={e => this.props.setValue(parseInt(e.target.value))}
                     />
                 </form>
             </div>
         )
     }
-};
+}
 
 const mapStateToProps = (state) => {
     return {
