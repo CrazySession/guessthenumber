@@ -8,8 +8,9 @@ import './css/searchBar.css';
 import {fonts} from "../data/fonts";
 
 class SearchBar extends Component {
+    // #TODO change from state to redux ---> victory pic gets moved to Remaining Attempts
     state = { pic : ''};
-
+    // #TODO set query to var with rnd search querys or store 4 different querys in one call
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
@@ -38,7 +39,7 @@ class SearchBar extends Component {
             this.props.guessed(true);
 /*                this.props.setValue('');*/
             this.props.setDifficulty('');
-            this.getUser();
+            this.getUser();     //# TODO call api at page load not every won game --- > too much traffic
         }else{
 
             // Case -- - Lose Game
@@ -61,6 +62,7 @@ class SearchBar extends Component {
         // destructering
         const { value, rndNumber, guess, randomFont } = this.props;
 
+        //#TODO Move victory pic to remaining attempts!
         //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
         if (value === rndNumber && guess === true) {
             return (
