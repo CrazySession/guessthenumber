@@ -64,14 +64,14 @@ class SearchBar extends Component {
 
         //#TODO Move victory pic to remaining attempts!
         //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
-        if (value === rndNumber && guess === true) {
+/*        if (value === rndNumber && guess === true) {
             return (
                 <div>
                     <img src={this.state.pic} alt={'random Pic'}/>
                     <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
                 </div>
             )
-        }
+        }*/
 
         return (
             <div>

@@ -3,13 +3,28 @@ import { connect } from 'react-redux';
 import {fonts} from "../data/fonts";
 
 const RemainingAttempts = (props) => {
-    return <div style={{ fontFamily: `'${fonts[props.randomFont]}'` ,fontSize: '4em'}}>Remaining Attempts: {props.counts}</div>
+    // destructering
+    const { counts, randomFont, rndNumber, guess, value } = props;
+
+    if (value === rndNumber && guess === true) {
+        return (
+            <div>
+                {/*<img src={this.state.pic} alt={'random Pic'}/>*/}
+                <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
+            </div>
+        )
+    }
+
+    return <div style={{ fontFamily: `'${fonts[randomFont]}'` ,fontSize: '4em'}}>Remaining Attempts: {counts}</div>
 };
 
 const mapStateToProps = (state) => {
     return {
-        counts : state.counts,
-        randomFont : state.randomFont
+        counts      : state.counts,
+        randomFont  : state.randomFont,
+        rndNumber   : state.randomNumber,
+        guess       : state.guess,
+        value       : state.value
     }
 };
 
