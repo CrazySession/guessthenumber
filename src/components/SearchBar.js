@@ -37,7 +37,6 @@ class SearchBar extends Component {
         if (this.props.value === this.props.rndNumber) {
             this.props.giveHint(this.props.value, this.props.rndNumber);
             this.props.guessed(true);
-/*                this.props.setValue('');*/
             this.props.setDifficulty('');
             this.getUser();     //# TODO call api at page load not every won game --- > too much traffic
         }else{
@@ -62,16 +61,7 @@ class SearchBar extends Component {
         // destructering
         const { value, rndNumber, guess, randomFont } = this.props;
 
-        //#TODO Move victory pic to remaining attempts!
         //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
-/*        if (value === rndNumber && guess === true) {
-            return (
-                <div>
-                    <img src={this.state.pic} alt={'random Pic'}/>
-                    <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
-                </div>
-            )
-        }*/
 
         return (
             <div>
