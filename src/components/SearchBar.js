@@ -19,6 +19,10 @@ class SearchBar extends Component {
         this.state = { rndPic : Math.ceil(Math.random()*4)-1 , pics : ['cats', 'cat', 'dogs', 'dog']};
     }
 
+    componentDidUpdate(){
+        this.nameInput.focus();
+    }
+
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
@@ -80,6 +84,7 @@ class SearchBar extends Component {
                             fontFamily: `'${fonts[randomFont]}'`
                         }}
                         type={'number'}
+                        ref={(input) => { this.nameInput = input; }}
                         /*ref={(ip) => this.myInp = ip}*/
                         disabled={guess}
                         value={value}
