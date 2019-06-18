@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-import { giveHint, count, setValue, guessed, addValue, setDifficulty } from "../actions";
+import {    giveHint,
+            count,
+            setValue,
+            guessed,
+            addValue,
+            setDifficulty,
+            storePics} from "../actions";
 import unsplash from '../api/unsplash'
 
 import './css/searchBar.css';
@@ -11,17 +17,15 @@ class SearchBar extends Component {
     constructor(props){
         super(props);
         this.getUser();
-        this.state = { pic : []};
     }
-    // #TODO change from state to redux ---> victory pic gets moved to Remaining Attempts
     // #TODO set query to var with rnd search querys or store 4 different querys in one call
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
                 params: {query : 'cats'}
             });
-            this.setState({ pic : response.data.results});
-            console.log(this.state.pic);
+            this.props.storePics(response.data.results);
+            console.log(this.props.picList);
         } catch (error) {
             console.error(error);
         }
@@ -93,7 +97,8 @@ const mapStateToProps = (state) => {
         value :     state.value,
         guess :     state.guess,
         valueList : state.valueList,
-        randomFont: state.randomFont
+        randomFont :state.randomFont,
+        picList :   state.picList
     }
 };
 
@@ -102,5 +107,6 @@ export default connect(mapStateToProps, {   giveHint,
                                             setValue,
                                             guessed,
                                             addValue,
-                                            setDifficulty
+                                            setDifficulty,
+                                            storePics
                                         }) (SearchBar)

@@ -74,3 +74,12 @@ export const setDifficulty = (tries) => {
         }
     }
 };
+
+export const storePics = (pics) => {
+    return {
+        type: 'STORE_PICS',
+        payload: {
+            pics : pics
+        }
+    }
+};

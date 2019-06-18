@@ -96,6 +96,15 @@ const valueList = (valueList = [],action) => {
     return valueList;
 };
 
+const picList = (picList = '',action) => {
+    if (action.type === 'STORE_PICS'){
+        picList = action.payload.pics;
+        return picList
+    }
+
+    return picList;
+};
+
 export default combineReducers({
     hintList : hintList,
     randomNumber: randomNumber,
@@ -104,5 +113,6 @@ export default combineReducers({
     guess : guess,
     valueList : valueList,
     chosenDiff : chosenDiff,
-    randomFont : randomFont
+    randomFont : randomFont,
+    picList : picList
 });
