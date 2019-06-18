@@ -18,7 +18,7 @@ class SearchBar extends Component {
         super(props);
         this.state = { rndPic : Math.ceil(Math.random()*4)-1 , pics : ['cats', 'cat', 'dogs', 'dog']};
     }
-    // #TODO set query to var with rnd search querys or store 4 different querys in one call
+
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
