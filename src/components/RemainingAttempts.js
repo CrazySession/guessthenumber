@@ -9,7 +9,7 @@ const RemainingAttempts = (props) => {
     if (value === rndNumber && guess === true) {
         return (
             <div>
-                {/*<img src={this.state.pic} alt={'random Pic'}/>*/}
+                <img src={props.picList[0].urls.small} alt={'random Pic'}/>
                 <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
             </div>
         )
@@ -24,7 +24,8 @@ const mapStateToProps = (state) => {
         randomFont  : state.randomFont,
         rndNumber   : state.randomNumber,
         guess       : state.guess,
-        value       : state.value
+        value       : state.value,
+        picList     : state.picList
     }
 };
 
