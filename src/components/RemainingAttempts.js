@@ -4,12 +4,12 @@ import {fonts} from "../data/fonts";
 
 const RemainingAttempts = (props) => {
     // destructering
-    const { counts, randomFont, rndNumber, guess, value } = props;
+    const { counts, randomFont, rndNumber, guess, value, picList } = props;
 
-    if (value === rndNumber && guess === true) {
+    if (value === rndNumber && guess && picList) {
         return (
             <div>
-                <img src={props.picList[0].urls.small} alt={'random Pic'}/>
+                <img src={picList[Math.ceil(Math.random()*10)-1].urls.small} alt={'random Pic'}/>
                 <p style={{ textAlign:'center', fontFamily: `'${fonts[randomFont]}'` }}>Victory! You did it! Great! Try again?!</p>
             </div>
         )

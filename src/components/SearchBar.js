@@ -17,7 +17,6 @@ class SearchBar extends Component {
     constructor(props){
         super(props);
         this.state = { rndPic : Math.ceil(Math.random()*4)-1 , pics : ['cats', 'cat', 'dogs', 'dog']};
-        this.getUser();
     }
     // #TODO set query to var with rnd search querys or store 4 different querys in one call
     getUser = async () => {
@@ -26,8 +25,6 @@ class SearchBar extends Component {
                 params: {query : this.state.pics[this.state.rndPic]}
             });
             this.props.storePics(response.data.results);
-            console.log(this.props.picList);
-            console.log(this.state.rndPic);
         } catch (error) {
             console.error(error);
         }
@@ -48,6 +45,8 @@ class SearchBar extends Component {
             this.props.giveHint(this.props.value, this.props.rndNumber);
             this.props.guessed(true);
             this.props.setDifficulty('');
+            this.setState( {rndPic : Math.ceil(Math.random()*4)-1 } );
+            this.getUser();
         }else{
 
             // Case -- - Lose Game
