@@ -16,16 +16,18 @@ import {fonts} from "../data/fonts";
 class SearchBar extends Component {
     constructor(props){
         super(props);
+        this.state = { rndPic : Math.ceil(Math.random()*4)-1 , pics : ['cats', 'cat', 'dogs', 'dog']};
         this.getUser();
     }
     // #TODO set query to var with rnd search querys or store 4 different querys in one call
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
-                params: {query : 'cats'}
+                params: {query : this.state.pics[this.state.rndPic]}
             });
             this.props.storePics(response.data.results);
             console.log(this.props.picList);
+            console.log(this.state.rndPic);
         } catch (error) {
             console.error(error);
         }
