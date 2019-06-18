@@ -8,16 +8,20 @@ import './css/searchBar.css';
 import {fonts} from "../data/fonts";
 
 class SearchBar extends Component {
+    constructor(props){
+        super(props);
+        this.getUser();
+        this.state = { pic : []};
+    }
     // #TODO change from state to redux ---> victory pic gets moved to Remaining Attempts
-    state = { pic : ''};
     // #TODO set query to var with rnd search querys or store 4 different querys in one call
     getUser = async () => {
         try {
             const response = await unsplash.get('/search/photos', {
                 params: {query : 'cats'}
             });
-            console.log(response.data.results[0].urls.small);
-            this.setState({ pic : response.data.results[0].urls.small })
+            this.setState({ pic : response.data.results});
+            console.log(this.state.pic);
         } catch (error) {
             console.error(error);
         }
@@ -38,7 +42,6 @@ class SearchBar extends Component {
             this.props.giveHint(this.props.value, this.props.rndNumber);
             this.props.guessed(true);
             this.props.setDifficulty('');
-            this.getUser();     //# TODO call api at page load not every won game --- > too much traffic
         }else{
 
             // Case -- - Lose Game
