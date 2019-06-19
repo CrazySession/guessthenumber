@@ -9,7 +9,6 @@ const NavBar = (props) => {
     //destructering
     const { chosenDiff, addValue, guessed, chooseFont, setValue, randomFont, guess, hint  } = props;
 
-    //#TODO onClick={() => {this.myInp.focus()} ----- further infos see SearchBar INPUT-TODO
     const gameStart = () => {
         if (chosenDiff !== 'Easy' && chosenDiff !== 'Medium' && chosenDiff !== 'Hard'){
             alert('please select a difficulty first');

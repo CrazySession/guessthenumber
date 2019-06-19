@@ -73,7 +73,6 @@ class SearchBar extends Component {
         // destructering
         const { value, rndNumber, guess, randomFont } = this.props;
 
-        //#TODO INPUT-TODO set redux var for input ref to set autofocus on input field after clicking "Start Game" at Navbar.js
 
         return (
             <div>
