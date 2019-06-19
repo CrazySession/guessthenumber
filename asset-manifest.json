@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/guessthenumber/static/css/main.ca54a786.chunk.css",
+    "main.js": "/guessthenumber/static/js/main.5e8fa052.chunk.js",
+    "main.js.map": "/guessthenumber/static/js/main.5e8fa052.chunk.js.map",
+    "runtime~main.js": "/guessthenumber/static/js/runtime~main.7cb329bd.js",
+    "runtime~main.js.map": "/guessthenumber/static/js/runtime~main.7cb329bd.js.map",
+    "static/js/2.98b185bb.chunk.js": "/guessthenumber/static/js/2.98b185bb.chunk.js",
+    "static/js/2.98b185bb.chunk.js.map": "/guessthenumber/static/js/2.98b185bb.chunk.js.map",
+    "index.html": "/guessthenumber/index.html",
+    "precache-manifest.eace3597fe6faf1bd049a6c250f80566.js": "/guessthenumber/precache-manifest.eace3597fe6faf1bd049a6c250f80566.js",
+    "service-worker.js": "/guessthenumber/service-worker.js",
+    "static/css/main.ca54a786.chunk.css.map": "/guessthenumber/static/css/main.ca54a786.chunk.css.map"
+  }
+}
