@@ -31,7 +31,13 @@ class App extends Component {
                 <NavBar             />
             </section>
             <footer>
-                Footer
+                &copy; 2019 This Site was designed and created by
+                                                        <a href="https://github.com/CrazySession"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"> <b>Andreas Kochmann</b> <i style={{ color: '#8D674B', fontSize: '1.3em', marginTop : '5px'}} className="fab fa-github"></i> </a>
+                Thanks for all the awesome pictures to <a href="https://unsplash.com/"
+                                              target="_blank"
+                                                          rel="noopener noreferrer"><b>Unsplash</b> <i style={{ color: '#8D674B', fontSize: '1.3em', marginTop : '5px'}} className="fas fa-camera"></i></a>
             </footer>
         </div>
     )
