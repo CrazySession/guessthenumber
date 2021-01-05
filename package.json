@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://crazysession.github.io/guessthenumber/",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "gh": "^1.17.5",
     "pages": "0.0.16",
     "react": "^16.8.6",
